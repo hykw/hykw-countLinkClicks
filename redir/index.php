@@ -41,13 +41,24 @@ function onErrorRedirect($location = '/')
 
 ##################################################
 
-if (!isset($_SERVER['REQUEST_URI']) || !isset($ghykwCLC_redir) || !isset($ghykwCLC_whitelists) || !isset($ghykwCLC_logdir) || !isset($ghykwCLC_logPrefix)) {
-    onErrorRedirect();
-}
+$isError = FALSE;
+if (!isset($ghykwCLC) || !isset($_SERVER['REQUEST_URI']))
+  $isError = TRUE;
+
+$redir = $ghykwCLC['redir'];
+$logdir = $ghykwCLC['logdir'];
+$logprefix = $ghykwCLC['logprefix'];
+$whitelists = $ghykwCLC['whitelists'];
+
+if (!isset($redir) || !isset($logdir) || !isset($logprefix) || !isset($whitelists))
+  $isError = TRUE;
+
+if ($isError)
+  onErrorRedirect();
 
 $uri = $_SERVER['REQUEST_URI'];
 
-$pattern = sprintf('/^\%s\/(https?:\/\/.*)/', $ghykwCLC_redir);
+$pattern = sprintf('/^\%s\/(https?:\/\/.*)/', $redir);
 $redirectDir = preg_replace($pattern, '$1', $uri);
 
 # illegal url
@@ -56,11 +67,11 @@ if ($uri == $redirectDir) {
   exit;
 }
 
-foreach ($ghykwCLC_whitelists as $whiteURL) {
+foreach ($whitelists as $whiteURL) {
   $pattern = sprintf('/^%s.*/', $whiteURL);
 
   if (preg_match($pattern, $redirectDir)) {
-    writelog($ghykwCLC_logdir, $ghykwCLC_logPrefix, $redirectDir, $_SERVER, $_COOKIE);
+    writelog($logdir, $logPrefix, $redirectDir, $_SERVER, $_COOKIE);
     header('Location: ' . $redirectDir);
     exit;
   }
