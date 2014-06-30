@@ -71,7 +71,7 @@ foreach ($whitelists as $whiteURL) {
   $pattern = sprintf('/^%s.*/', $whiteURL);
 
   if (preg_match($pattern, $redirectDir)) {
-    writelog($logdir, $logPrefix, $redirectDir, $_SERVER, $_COOKIE);
+    writelog($logdir, $logprefix, $redirectDir, $_SERVER, $_COOKIE);
     header('Location: ' . $redirectDir);
     exit;
   }
