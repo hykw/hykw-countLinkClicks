@@ -3,7 +3,7 @@ hykw-countLinkClicks
 
 # 前準備
 ## ファイルの配置
-- index.phpと .htaccess を DOCUMENT_ROOT/redir/ に配置
+- index.phpと .htaccess を DOCUMENT_ROOT/redir/ に配置(or ln -s)
 
 ## functions.phpで、連想配列 $ghykwCLC にパラメータを設定
 - redir

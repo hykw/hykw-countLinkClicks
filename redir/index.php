@@ -1,6 +1,7 @@
 <?php
 
-require('../wp-load.php');
+$wpload = sprintf('%s/wp-load.php', $_SERVER['DOCUMENT_ROOT']);
+require_once($wpload);
 
 function getValue($values, $key, $retvalue = '')
 {
