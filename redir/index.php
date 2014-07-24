@@ -13,10 +13,10 @@ function getValue($values, $key, $retvalue = '')
 
 function writelog($logdir, $logprefix, $url, $_server, $_cookie)
 {
-  $date = date_i18n('Y-md', false, true);  // WP is UTC
+  $date = date_i18n('Y-md');
   $file = sprintf('%s/%s%s.log', $logdir, $logprefix, $date);
 
-  $now = date_i18n('Y/m/d H:i:s', false, true);
+  $now = date_i18n('Y/m/d H:i:s');
   $csession = getValue($_cookie, 'csession');
   $ip = getValue($_server, 'REMOTE_ADDR');
   $ua = getValue($_server, 'HTTP_USER_AGENT');
