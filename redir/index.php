@@ -20,13 +20,15 @@ function writelog($logdir, $logprefix, $url, $_server, $_cookie)
   $csession = getValue($_cookie, 'csession');
   $ip = getValue($_server, 'REMOTE_ADDR');
   $ua = getValue($_server, 'HTTP_USER_AGENT');
+  $referer = getValue($_server, 'HTTP_REFERER');
 
-  $log = sprintf("%s\t%s\t%s\t%s\t%s\n",
+  $log = sprintf("%s\t%s\t%s\t%s\t%s\t%s\n",
       $now,
       $csession,
       $ip,
       $ua,
-      $url
+      $url,
+      $referer
   );
 
   $fp = fopen($file, 'a');
