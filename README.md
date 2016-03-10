@@ -29,3 +29,5 @@ hykw-countLinkClicks
 ## 外部リンク記載方法
     <a href="/redir/http://google.com/">google</a>
 
+### converge 版
+    <a href="/redir/converge/KEYKEY/http://google.com/">google</a>
