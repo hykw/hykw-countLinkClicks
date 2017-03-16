@@ -55,7 +55,7 @@ function get_CLC_values($hykwCLC)
 
 
 /**
- * parse_converge_path /redir/converge/ABC/URL → list(AABC, URL)
+ * parse_converge_path /redir/converge/ABC/URL → list(ABC, URL)
  *
  * @return array
  */
